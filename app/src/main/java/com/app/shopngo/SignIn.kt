@@ -109,11 +109,13 @@ class SignIn : AppCompatActivity() {
         auth.signInWithCredential(credential)
             .addOnCompleteListener { task ->
                 CustomDialog.hideLoading()
+
                 if(task.isSuccessful){
-                    CustomDialog.showLoading(this@SignIn)
                     startActivity(Intent(this, MainActivity::class.java))
                     Toast.makeText(this, "Sign In Berhasil", Toast.LENGTH_SHORT).show()
                     finishAffinity()
+                }else{
+                    Toast.makeText(this, "Sign In Gagal", Toast.LENGTH_SHORT).show()
                 }
             }
             .addOnFailureListener {
@@ -138,6 +140,7 @@ class SignIn : AppCompatActivity() {
                     CustomDialog.showLoading(this@SignIn)
                     val credential = FacebookAuthProvider.getCredential(result.accessToken.token)
                     firebaseAuth(credential)
+
                 }
 
 
@@ -146,12 +149,13 @@ class SignIn : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        callbackManager.onActivityResult(resultCode, resultCode, data)
-        if (requestCode == RC_SIGN_IN){
 
+        callbackManager.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == RC_SIGN_IN){
+            CustomDialog.showLoading(this)
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
-                CustomDialog.showLoading(this@SignIn)
                 val account = task.getResult(ApiException::class.java)
                 val credential = GoogleAuthProvider.getCredential(account?.idToken, null)
                 firebaseAuth(credential)

@@ -10,7 +10,6 @@ object CustomDialog {
 
     fun showLoading(activity: Activity){
         val dialogView = activity.layoutInflater.inflate(R.layout.layout_progress, null, false)
-
         dialog = Dialog(activity)
         dialog?.setCancelable(false)
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))

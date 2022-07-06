@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">SHOP N GO</string>
-    <string name="facebook_app_id">1234</string>
-    <string name="fb_login_protocol_scheme">fb1234</string>
-    <string name="facebook_client_token">56789</string>
+    <string name="facebook_app_id">363900889161595</string>
+    <string name="fb_login_protocol_scheme">fb363900889161595</string>
+    <string name="facebook_client_token">6a9e9fa54f8c0f8a02571723312d309c</string>
 </resources>
