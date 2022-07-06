@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="20dp"
-    android:background="@android:color/white"
     tools:context=".SignIn">
 
     <ScrollView
@@ -24,6 +23,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="20dp"
                 android:src="@drawable/shopgo"/>
 
             <TextView
@@ -31,27 +31,32 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:textSize="24sp"
-                android:textColor="@android:color/black"
                 android:textStyle="bold"
                 android:text="Sign-In"
                 android:layout_marginBottom="20dp"/>
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:gravity="center_vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                app:startIconDrawable="@drawable/email">
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/colorPrimary"
+                app:startIconDrawable="@drawable/email"
+                android:layout_marginBottom="20dp">
 
             <EditText
                 android:id="@+id/etEmailSignIn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_edit_text"
                 android:hint="Email"
                 android:paddingStart="32dp"
-                android:inputType="textEmailAddress"
-                android:layout_marginBottom="20dp"/>
+                android:inputType="textEmailAddress" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -61,13 +66,16 @@
                 app:passwordToggleTint="@color/colorPrimary"
                 android:gravity="center_vertical"
                 app:startIconDrawable="@drawable/password"
-                >
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp">
 
                 <EditText
                     android:id="@+id/etPasswordSignIn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_edit_text"
                     android:paddingStart="32dp"
                     android:hint="Password"
                     android:inputType="textPassword"/>
@@ -84,8 +92,7 @@
                 android:layout_gravity="end"
                 android:textColor="@color/colorPrimaryDark"
                 android:clickable="true"
-                android:focusable="true"
-                android:background="@drawable/bg_forgot_pass"/>
+                android:focusable="true" />
 
             <Button
                 android:id="@+id/btnSignIn"
@@ -93,27 +100,16 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/bg_btn_primary"
-                android:text="Sign-In"
-                android:textColor="@android:color/white"/>
+                android:backgroundTint="@color/colorPrimary"
+                android:text="Sign-In" />
 
-            <TextView
-                android:id="@+id/tvSignUp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New User? Register Now"
-                android:textStyle="bold"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:textSize="16sp"/>
+
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="use other methods"
+                android:text="or sign in with"
+                android:layout_margin="5dp"
                 android:textStyle="bold"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
@@ -125,6 +121,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginTop="3dp"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -144,6 +141,39 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:src="@drawable/google"/>
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Don't Have Account?"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:clickable="true"
+                android:focusable="true"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/tvSignUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
+                android:text="Sign Up Now"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="5dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:textSize="14sp"/>
+
+
             </LinearLayout>
 
         </LinearLayout>

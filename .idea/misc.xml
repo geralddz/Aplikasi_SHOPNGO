@@ -5,9 +5,11 @@
       <map>
         <entry key="..\:/FILE MI/Semester 4/Mobile Pro 3/SHOPNGO/app/src/main/res/drawable/bg_btn_facebook.xml" value="0.1455" />
         <entry key="..\:/FILE MI/Semester 4/Mobile Pro 3/SHOPNGO/app/src/main/res/drawable/bg_btn_google.xml" value="0.1455" />
+        <entry key="..\:/FILE MI/Semester 4/Mobile Pro 3/SHOPNGO/app/src/main/res/drawable/bg_btn_primary.xml" value="0.1" />
         <entry key="..\:/FILE MI/Semester 4/Mobile Pro 3/SHOPNGO/app/src/main/res/drawable/bg_forgot_pass.xml" value="0.1075" />
+        <entry key="..\:/FILE MI/Semester 4/Mobile Pro 3/SHOPNGO/app/src/main/res/drawable/bgprimary.xml" value="0.1" />
         <entry key="..\:/FILE MI/Semester 4/Mobile Pro 3/SHOPNGO/app/src/main/res/layout/activity_main.xml" value="0.22083333333333333" />
-        <entry key="..\:/FILE MI/Semester 4/Mobile Pro 3/SHOPNGO/app/src/main/res/layout/activity_reset_password.xml" value="0.25" />
+        <entry key="..\:/FILE MI/Semester 4/Mobile Pro 3/SHOPNGO/app/src/main/res/layout/activity_reset_password.xml" value="0.22" />
         <entry key="..\:/FILE MI/Semester 4/Mobile Pro 3/SHOPNGO/app/src/main/res/layout/activity_sign_in.xml" value="0.22" />
         <entry key="..\:/FILE MI/Semester 4/Mobile Pro 3/SHOPNGO/app/src/main/res/layout/activity_sign_up.xml" value="0.21025641025641026" />
         <entry key="..\:/FILE MI/Semester 4/Mobile Pro 3/SHOPNGO/app/src/main/res/layout/activity_splash_screen.xml" value="0.22083333333333333" />

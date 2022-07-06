@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@android:color/white"
     android:padding="20dp"
     tools:context=".SignUp">
 
@@ -40,6 +39,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="20dp"
                 android:src="@drawable/shopgo"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -48,7 +48,6 @@
                 android:layout_gravity="center_horizontal"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                android:textColor="@android:color/black"
                 android:layout_marginBottom="20dp"/>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -56,17 +55,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                app:startIconDrawable="@drawable/email">
+                app:startIconDrawable="@drawable/email"
+                android:layout_marginBottom="20dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/colorPrimary">
 
             <EditText
                 android:id="@+id/etEmailSignUp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_edit_text"
                 android:hint="Email"
                 android:paddingStart="32dp"
-                android:inputType="textEmailAddress"
-                android:layout_marginBottom="20dp"/>
+                android:inputType="textEmailAddress" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -76,19 +81,21 @@
                 android:layout_height="wrap_content"
                 app:passwordToggleEnabled="true"
                 app:passwordToggleTint="@color/colorPrimary"
-                app:hintEnabled="false"
-                android:gravity="center_vertical"
                 app:startIconDrawable="@drawable/password"
-                android:layout_marginBottom="20dp">
+                android:layout_marginBottom="20dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp">
 
                 <EditText
                     android:id="@+id/etPasswordSignUp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_edit_text"
                     android:paddingStart="32dp"
                     android:hint="Password"
-                    android:inputType="textPassword"/>
+                    android:inputType="textPassword" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -97,16 +104,18 @@
                 android:layout_height="wrap_content"
                 app:passwordToggleEnabled="true"
                 app:passwordToggleTint="@color/colorPrimary"
-                app:hintEnabled="false"
-                android:gravity="center_vertical"
                 app:startIconDrawable="@drawable/password"
-                android:layout_marginBottom="36dp">
+                android:layout_marginBottom="36dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp">
 
                 <EditText
                     android:id="@+id/etConfirmPasswordSignUp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_edit_text"
                     android:paddingStart="32dp"
                     android:hint="Confirm Password"
                     android:inputType="textPassword"/>
@@ -118,7 +127,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/bg_btn_primary"
+                android:backgroundTint="@color/colorPrimary"
                 android:text="Sign-Up"
                 android:textColor="@android:color/white"/>
         </LinearLayout>
