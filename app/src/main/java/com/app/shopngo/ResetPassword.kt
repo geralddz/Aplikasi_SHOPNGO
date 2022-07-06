@@ -50,7 +50,7 @@ class ResetPassword : AppCompatActivity() {
             .addOnCompleteListener { task ->
                 if(task.isSuccessful){
                     Toast.makeText(this, "Your reset password has been sent to your email", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this, MainActivity::class.java))
+                    startActivity(Intent(this, SignIn::class.java))
                     finishAffinity()
                 }
             }
