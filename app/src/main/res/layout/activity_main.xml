@@ -7,45 +7,65 @@
     android:padding="20dp"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/layoutprofil"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:layout_height="wrap_content">
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:src="@drawable/shopgo"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="20dp"/>
+            android:id="@+id/ivprofile"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/shopgo" />
 
         <TextView
+            android:id="@+id/hi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Welcome back"
+            android:layout_marginStart="10dp"
+            android:layout_toRightOf="@+id/ivprofile"
+            android:text="Hi"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="@color/colorPrimary"
-            android:layout_marginBottom="20dp"/>
+            android:textColor="@color/colorPrimary"/>
 
         <TextView
             android:id="@+id/tvEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Email"
+            android:layout_toRightOf="@+id/ivprofile"
+            android:layout_below="@id/hi"
+            android:layout_marginStart="10dp"
+            android:text="User"
             android:textStyle="bold"
             android:textSize="20sp"/>
 
-    </LinearLayout>
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tbout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            app:menu="@menu/toolbarmenu"/>
 
-    <Button
-        android:id="@+id/btnSignOut"
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottomnav"
+        android:layout_below="@+id/layoutprofil"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomnav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:backgroundTint="@color/red"
-        android:text="SIGN OUT"
-        android:textColor="@android:color/white" />
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_nav">
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </RelativeLayout>
