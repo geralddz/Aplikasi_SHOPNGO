@@ -1,9 +1,10 @@
-package com.app.shopngo
+package com.app.shopngo.Object
 
 import android.app.Activity
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import com.app.shopngo.R
 
 object CustomDialog {
     private var dialog: Dialog? = null

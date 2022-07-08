@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="20dp"
-    tools:context=".Activity.SignUpActivity">
+    tools:context=".Activity.EditProfileActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -16,12 +16,11 @@
         app:elevation="0dp">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/tbSignUp"
+            android:id="@+id/tbHome"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@android:color/transparent"
             android:elevation="0dp"/>
-
     </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
@@ -36,26 +35,29 @@
             android:padding="20dp">
 
             <ImageView
+                android:id="@+id/ivphoto"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:scaleType="centerCrop"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="20dp"
-                android:src="@drawable/shopgo"/>
+                android:src="@drawable/photo"/>
+
             <TextView
+                android:id="@+id/tvpoto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sign-Up"
                 android:layout_gravity="center_horizontal"
-                android:textSize="24sp"
                 android:textStyle="bold"
-                android:layout_marginBottom="20dp"/>
+                android:layout_marginBottom="20dp"
+                android:text="add photo"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:gravity="center_vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                app:startIconDrawable="@drawable/email"
+                app:startIconDrawable="@drawable/person"
                 android:layout_marginBottom="20dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 app:boxCornerRadiusBottomEnd="10dp"
@@ -65,46 +67,67 @@
                 app:endIconMode="clear_text"
                 app:endIconTint="@color/colorPrimary">
 
-            <EditText
-                android:id="@+id/etEmailSignUp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Email"
-                android:paddingStart="32dp"
-                android:inputType="textEmailAddress" />
+                <EditText
+                    android:id="@+id/etusername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Username"
+                    android:paddingStart="32dp"
+                    android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <com.google.android.material.textfield.TextInputLayout
+                android:gravity="center_vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:passwordToggleEnabled="true"
-                app:passwordToggleTint="@color/colorPrimary"
-                app:startIconDrawable="@drawable/password"
+                android:layout_gravity="center_vertical"
+                app:startIconDrawable="@drawable/account"
                 android:layout_marginBottom="20dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 app:boxCornerRadiusBottomEnd="10dp"
                 app:boxCornerRadiusBottomStart="10dp"
                 app:boxCornerRadiusTopEnd="10dp"
-                app:boxCornerRadiusTopStart="10dp">
+                app:boxCornerRadiusTopStart="10dp"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/colorPrimary">
 
                 <EditText
-                    android:id="@+id/etPasswordSignUp"
+                    android:id="@+id/etnama"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:hint="Nama Lengkap"
                     android:paddingStart="32dp"
-                    android:hint="Password"
-                    android:inputType="textPassword" />
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
+                app:startIconDrawable="@drawable/address">
+
+                <EditText
+                    android:id="@+id/etaddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Alamat"
+                    android:inputType="text"
+                    android:paddingStart="32dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:passwordToggleEnabled="true"
-                app:passwordToggleTint="@color/colorPrimary"
-                app:startIconDrawable="@drawable/password"
+                app:startIconDrawable="@drawable/phone"
                 android:layout_marginBottom="36dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 app:boxCornerRadiusBottomEnd="10dp"
@@ -113,22 +136,25 @@
                 app:boxCornerRadiusTopStart="10dp">
 
                 <EditText
-                    android:id="@+id/etConfirmPasswordSignUp"
+                    android:id="@+id/etphone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingStart="32dp"
-                    android:hint="Confirm Password"
-                    android:inputType="textPassword"/>
+                    android:hint="No. HP"
+                    android:inputType="phone"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/btnSignUp"
+                android:id="@+id/btnsaveprofile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:backgroundTint="@color/colorPrimary"
-                android:text="Sign-Up"
+                android:focusable="true"
+                android:clickable="true"
+                android:textAllCaps="false"
+                android:text="UPDATE"
                 android:textColor="@android:color/white"/>
         </LinearLayout>
 

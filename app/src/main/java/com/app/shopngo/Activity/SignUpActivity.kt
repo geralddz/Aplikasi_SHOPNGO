@@ -1,4 +1,4 @@
-package com.app.shopngo
+package com.app.shopngo.Activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,9 +8,11 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
+import com.app.shopngo.Object.CustomDialog
+import com.app.shopngo.R
 import com.google.firebase.auth.FirebaseAuth
 
-class SignUp : AppCompatActivity() {
+class SignUpActivity : AppCompatActivity() {
     private lateinit var toolbarUp: Toolbar
     private lateinit var btnSignUp : Button
     private lateinit var etEmailUp : EditText
@@ -56,7 +58,7 @@ class SignUp : AppCompatActivity() {
             .addOnCompleteListener { task ->
                 CustomDialog.hideLoading()
                 if (task.isSuccessful){
-                    startActivity(Intent(this, MainActivity::class.java))
+                    startActivity(Intent(this, EditProfileActivity::class.java))
                     Toast.makeText(this, "Sign Up Berhasil", Toast.LENGTH_SHORT).show()
                     finishAffinity()
                 }

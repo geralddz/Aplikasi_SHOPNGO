@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "55102189892-pbh15tud9fg5otmp8ao1ca0737drubj1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.shopngo",
+            "certificate_hash": "7ccf92bcf9fc716f8bc55a0e5a4087d0a15d22bd"
+          }
+        },
+        {
           "client_id": "55102189892-4tt7bm65am7l333n8nl13hso69fejt41.apps.googleusercontent.com",
           "client_type": 3
         }

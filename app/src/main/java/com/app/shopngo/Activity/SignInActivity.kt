@@ -1,10 +1,12 @@
-package com.app.shopngo
+package com.app.shopngo.Activity
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.app.shopngo.Object.CustomDialog
+import com.app.shopngo.R
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
@@ -16,7 +18,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.*
 
-class SignIn : AppCompatActivity() {
+class SignInActivity : AppCompatActivity() {
     private lateinit var btnSignIn : Button
     private lateinit var btnGoogleSignIn : ImageView
     private lateinit var btnFBSignIn : ImageView
@@ -55,11 +57,11 @@ class SignIn : AppCompatActivity() {
             }
         }
         tvSignUp.setOnClickListener {
-            startActivity(Intent(this, SignUp::class.java))
+            startActivity(Intent(this, SignUpActivity::class.java))
         }
 
         tvForgotPass.setOnClickListener {
-            startActivity(Intent(this, ResetPassword::class.java))
+            startActivity(Intent(this, ResetPassActivity::class.java))
         }
 
         btnGoogleSignIn.setOnClickListener {
@@ -109,9 +111,8 @@ class SignIn : AppCompatActivity() {
         auth.signInWithCredential(credential)
             .addOnCompleteListener { task ->
                 CustomDialog.hideLoading()
-
                 if(task.isSuccessful){
-                    startActivity(Intent(this, MainActivity::class.java))
+                    startActivity(Intent(this, EditProfileActivity::class.java))
                     Toast.makeText(this, "Sign In Berhasil", Toast.LENGTH_SHORT).show()
                     finishAffinity()
                 }else{
@@ -133,11 +134,11 @@ class SignIn : AppCompatActivity() {
                 }
 
                 override fun onError(error: FacebookException) {
-                    Toast.makeText(this@SignIn, error.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@SignInActivity, error.message, Toast.LENGTH_SHORT).show()
                 }
 
                 override fun onSuccess(result: LoginResult) {
-                    CustomDialog.showLoading(this@SignIn)
+                    CustomDialog.showLoading(this@SignInActivity)
                     val credential = FacebookAuthProvider.getCredential(result.accessToken.token)
                     firebaseAuth(credential)
 

@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
-    tools:context=".MainActivity">
+    tools:context=".Activity.MainActivity">
 
     <RelativeLayout
         android:id="@+id/layoutprofil"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/ivprofile"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -25,9 +25,9 @@
             android:layout_marginStart="10dp"
             android:layout_toRightOf="@+id/ivprofile"
             android:text="Hi"
+            android:textColor="@color/colorPrimary"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@color/colorPrimary"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvEmail"
