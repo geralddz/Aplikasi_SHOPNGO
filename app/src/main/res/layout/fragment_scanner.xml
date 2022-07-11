@@ -4,21 +4,129 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="vertical"
+    android:padding="20dp"
     tools:context=".Fragment.ScannerFragment">
 
     <com.budiyev.android.codescanner.CodeScannerView
         android:id="@+id/scanner_view"
         android:layout_width="350dp"
         android:layout_height="200dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:layout_gravity="center"
         app:frameAspectRatioWidth="21"
         app:frameAspectRatioHeight="10"
         app:frameCornersRadius="5dp"
         app:autoFocusButtonVisible="true"
         app:flashButtonVisible="true" />
+
+
+
+    <ImageView
+        android:id="@+id/ivbarang"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        app:startIconDrawable="@drawable/merk"
+        android:focusable="false"
+        android:clickable="false"
+        android:layout_marginTop="10dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/colorPrimary">
+
+        <EditText
+            android:id="@+id/etnamabarang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nama Barang"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:clickable="false"
+            android:paddingStart="32dp"
+            android:inputType="text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+    android:gravity="center_vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+    app:startIconDrawable="@drawable/price"
+    android:focusable="false"
+    android:clickable="false"
+    android:layout_marginTop="10dp"
+    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    app:boxCornerRadiusBottomEnd="10dp"
+    app:boxCornerRadiusBottomStart="10dp"
+    app:boxCornerRadiusTopEnd="10dp"
+    app:boxCornerRadiusTopStart="10dp"
+    app:endIconMode="clear_text"
+    app:endIconTint="@color/colorPrimary">
+
+    <EditText
+        android:id="@+id/ethargabarang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Harga Barang"
+        android:focusable="false"
+        android:cursorVisible="false"
+        android:clickable="false"
+        android:paddingStart="32dp"
+        android:inputType="text" />
+
+</com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        app:startIconDrawable="@drawable/add"
+        android:layout_marginTop="10dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/colorPrimary">
+
+        <EditText
+            android:id="@+id/etjumlahbarang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Jumlah Barang"
+            android:paddingStart="32dp"
+            android:inputType="number" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <Button
+        android:id="@+id/btaddtocart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="@color/colorPrimary"
+        android:textAllCaps="false"
+        android:text="Add Cart"
+        android:textColor="@color/white" />
+
+
 
 
 </LinearLayout>

@@ -9,14 +9,14 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.app.shopngo.Activity.EditProfileActivity
-import com.app.shopngo.FirebaseData.UserData
 import com.app.shopngo.Object.CustomDialog
 import com.app.shopngo.R
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.io.File
@@ -34,7 +34,6 @@ class SettingFragment : Fragment() {
     private lateinit var databaseReference : DatabaseReference
     private lateinit var storageReference: StorageReference
     private lateinit var uid : String
-    private lateinit var userdata : UserData
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,6 +56,7 @@ class SettingFragment : Fragment() {
         if(uid.isNotEmpty()){
             getUserData()
             getData()
+            getUserProfile()
         }
 
 
@@ -75,22 +75,22 @@ class SettingFragment : Fragment() {
     }
     private fun getUserData() {
         this.activity?.let { CustomDialog.showLoading(it) }
-       databaseReference.child(uid).addValueEventListener(object : ValueEventListener{
-           override fun onDataChange(snapshot: DataSnapshot) {
-               userdata = snapshot.getValue(UserData::class.java)!!
-               tvuser.text = userdata.username
-               tvnama.text = userdata.nama
-               tvalamat.text = userdata.alamat
-               tvhp.text = userdata.nope
-               getUserProfile()
+        databaseReference.child(uid).get().addOnCompleteListener { task ->
+           if (task.isSuccessful()) {
+               if (task.getResult()?.exists() == true) {
+                   val dataSnapshot: DataSnapshot = task.result!!
+                   val username = dataSnapshot.child("username").value.toString()
+                   val nama = dataSnapshot.child("nama").value.toString()
+                   val alamat = dataSnapshot.child("alamat").value.toString()
+                   val nope = dataSnapshot.child("nope").value.toString()
+                   tvuser.text = username
+                   tvnama.text = nama
+                   tvalamat.text = alamat
+                   tvhp.text = nope
+               }
            }
+       }
 
-           override fun onCancelled(error: DatabaseError) {
-               Toast.makeText(context, error.message, Toast.LENGTH_SHORT).show()
-               startActivity(Intent(activity, EditProfileActivity::class.java))
-           }
-
-       })
     }
 
     private fun getUserProfile() {

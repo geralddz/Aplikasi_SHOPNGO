@@ -112,7 +112,7 @@ class SignInActivity : AppCompatActivity() {
             .addOnCompleteListener { task ->
                 CustomDialog.hideLoading()
                 if(task.isSuccessful){
-                    startActivity(Intent(this, EditProfileActivity::class.java))
+                    startActivity(Intent(this, MainActivity::class.java))
                     Toast.makeText(this, "Sign In Berhasil", Toast.LENGTH_SHORT).show()
                     finishAffinity()
                 }else{
