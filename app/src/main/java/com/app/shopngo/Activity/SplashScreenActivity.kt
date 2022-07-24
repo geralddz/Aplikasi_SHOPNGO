@@ -19,10 +19,10 @@ class SplashScreenActivity : AppCompatActivity() {
     }
 
     private fun checkAuth() {
-        if(FirebaseAuth.getInstance().currentUser != null){
+        if (FirebaseAuth.getInstance().currentUser != null) {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
-        }else{
+        } else {
             startActivity(Intent(this, SignInActivity::class.java))
             finish()
         }

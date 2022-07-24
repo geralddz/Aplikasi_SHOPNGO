@@ -9,7 +9,7 @@ import com.app.shopngo.R
 object CustomDialog {
     private var dialog: Dialog? = null
 
-    fun showLoading(activity: Activity){
+    fun showLoading(activity: Activity) {
         val dialogView = activity.layoutInflater.inflate(R.layout.layout_progress, null, false)
         dialog = Dialog(activity)
         dialog?.setCancelable(false)
@@ -18,7 +18,7 @@ object CustomDialog {
         dialog?.show()
     }
 
-    fun hideLoading(){
+    fun hideLoading() {
         dialog?.dismiss()
     }
 }

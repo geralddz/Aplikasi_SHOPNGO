@@ -33,14 +33,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:textSize="16sp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="5dp"
                 android:ellipsize="marquee"
                 android:lines="2"
                 android:maxLines="3"
                 android:text="Nama Produk"
-                android:textColor="@color/colorPrimary" />
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp" />
 
         </LinearLayout>
 
@@ -53,8 +53,8 @@
                 android:id="@+id/btn_delete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
                 android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
                 app:srcCompat="@drawable/delete" />
 
             <LinearLayout

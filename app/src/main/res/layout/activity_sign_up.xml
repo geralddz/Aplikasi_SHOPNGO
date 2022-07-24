@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@android:color/transparent"
-            android:elevation="0dp"/>
+            android:elevation="0dp" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -40,85 +40,86 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="20dp"
-                android:src="@drawable/shopgo"/>
+                android:src="@drawable/shopgo" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sign-Up"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="20dp"
+                android:text="Sign-Up"
                 android:textSize="24sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="20dp"/>
+                android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:gravity="center_vertical"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                app:startIconDrawable="@drawable/email"
                 android:layout_marginBottom="20dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:gravity="center_vertical"
                 app:boxCornerRadiusBottomEnd="10dp"
                 app:boxCornerRadiusBottomStart="10dp"
                 app:boxCornerRadiusTopEnd="10dp"
                 app:boxCornerRadiusTopStart="10dp"
                 app:endIconMode="clear_text"
-                app:endIconTint="@color/colorPrimary">
+                app:endIconTint="@color/colorPrimary"
+                app:startIconDrawable="@drawable/email">
 
-            <EditText
-                android:id="@+id/etEmailSignUp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Email"
-                android:paddingStart="32dp"
-                android:inputType="textEmailAddress" />
+                <EditText
+                    android:id="@+id/etEmailSignUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:paddingStart="32dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:passwordToggleEnabled="true"
-                app:passwordToggleTint="@color/colorPrimary"
-                app:startIconDrawable="@drawable/password"
                 android:layout_marginBottom="20dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 app:boxCornerRadiusBottomEnd="10dp"
                 app:boxCornerRadiusBottomStart="10dp"
                 app:boxCornerRadiusTopEnd="10dp"
-                app:boxCornerRadiusTopStart="10dp">
+                app:boxCornerRadiusTopStart="10dp"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/colorPrimary"
+                app:startIconDrawable="@drawable/password">
 
                 <EditText
                     android:id="@+id/etPasswordSignUp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingStart="32dp"
                     android:hint="Password"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:paddingStart="32dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:passwordToggleEnabled="true"
-                app:passwordToggleTint="@color/colorPrimary"
-                app:startIconDrawable="@drawable/password"
                 android:layout_marginBottom="36dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 app:boxCornerRadiusBottomEnd="10dp"
                 app:boxCornerRadiusBottomStart="10dp"
                 app:boxCornerRadiusTopEnd="10dp"
-                app:boxCornerRadiusTopStart="10dp">
+                app:boxCornerRadiusTopStart="10dp"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/colorPrimary"
+                app:startIconDrawable="@drawable/password">
 
                 <EditText
                     android:id="@+id/etConfirmPasswordSignUp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingStart="32dp"
                     android:hint="Confirm Password"
-                    android:inputType="textPassword"/>
+                    android:inputType="textPassword"
+                    android:paddingStart="32dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -129,7 +130,7 @@
                 android:layout_gravity="center_horizontal"
                 android:backgroundTint="@color/colorPrimary"
                 android:text="Sign-Up"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white" />
         </LinearLayout>
 
     </ScrollView>

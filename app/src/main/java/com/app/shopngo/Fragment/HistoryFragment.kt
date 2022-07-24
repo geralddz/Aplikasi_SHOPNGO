@@ -28,10 +28,14 @@ class HistoryFragment : Fragment() {
     private lateinit var itemsRV: RecyclerView
     private lateinit var listhistory: List<HistoryEntity>
     private lateinit var historyAdapter: HistoryAdapter
-    private lateinit var historyViewModel : HistoryViewModel
+    private lateinit var historyViewModel: HistoryViewModel
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val historyRepository = HistoryRepository(AppDatabase(context!!))
         val factory = HistoryViewModelFactory(historyRepository)
         historyViewModel = ViewModelProvider(this, factory)[HistoryViewModel::class.java]
@@ -57,5 +61,5 @@ class HistoryFragment : Fragment() {
         }
     }
 
-    
+
 }

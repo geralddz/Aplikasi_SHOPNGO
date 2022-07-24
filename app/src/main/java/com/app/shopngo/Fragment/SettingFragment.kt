@@ -23,21 +23,22 @@ import java.io.File
 
 
 class SettingFragment : Fragment() {
-    private lateinit var imgprofile : ImageView
-    private lateinit var tvuser : TextView
-    private lateinit var tvmail : TextView
-    private lateinit var tvnama : TextView
-    private lateinit var tvalamat : TextView
-    private lateinit var tvhp : TextView
-    private lateinit var btnedit : Button
+    private lateinit var imgprofile: ImageView
+    private lateinit var tvuser: TextView
+    private lateinit var tvmail: TextView
+    private lateinit var tvnama: TextView
+    private lateinit var tvalamat: TextView
+    private lateinit var tvhp: TextView
+    private lateinit var btnedit: Button
     private lateinit var auth: FirebaseAuth
-    private lateinit var databaseReference : DatabaseReference
+    private lateinit var databaseReference: DatabaseReference
     private lateinit var storageReference: StorageReference
-    private lateinit var uid : String
+    private lateinit var uid: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_setting, container, false)
     }
 
@@ -53,7 +54,7 @@ class SettingFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
         uid = auth.currentUser?.uid.toString()
         databaseReference = FirebaseDatabase.getInstance().getReference("Users")
-        if(uid.isNotEmpty()){
+        if (uid.isNotEmpty()) {
             getUserData()
             getData()
             getUserProfile()
@@ -66,41 +67,43 @@ class SettingFragment : Fragment() {
 
 
     }
+
     private fun getData() {
         val user = auth.currentUser
-        if (user != null){
+        if (user != null) {
             tvmail.text = user.email
 
         }
     }
+
     private fun getUserData() {
         this.activity?.let { CustomDialog.showLoading(it) }
         databaseReference.child(uid).get().addOnCompleteListener { task ->
-           if (task.isSuccessful()) {
-               if (task.getResult()?.exists() == true) {
-                   val dataSnapshot: DataSnapshot = task.result!!
-                   val username = dataSnapshot.child("username").value.toString()
-                   val nama = dataSnapshot.child("nama").value.toString()
-                   val alamat = dataSnapshot.child("alamat").value.toString()
-                   val nope = dataSnapshot.child("nope").value.toString()
-                   tvuser.text = username
-                   tvnama.text = nama
-                   tvalamat.text = alamat
-                   tvhp.text = nope
-               }
-           }
-       }
+            if (task.isSuccessful()) {
+                if (task.getResult()?.exists() == true) {
+                    val dataSnapshot: DataSnapshot = task.result!!
+                    val username = dataSnapshot.child("username").value.toString()
+                    val nama = dataSnapshot.child("nama").value.toString()
+                    val alamat = dataSnapshot.child("alamat").value.toString()
+                    val nope = dataSnapshot.child("nope").value.toString()
+                    tvuser.text = username
+                    tvnama.text = nama
+                    tvalamat.text = alamat
+                    tvhp.text = nope
+                }
+            }
+        }
 
     }
 
     private fun getUserProfile() {
         storageReference = FirebaseStorage.getInstance().reference.child("Users/$uid")
-        val localFile = File.createTempFile("tempImage","jpeg")
+        val localFile = File.createTempFile("tempImage", "jpeg")
         storageReference.getFile(localFile).addOnSuccessListener {
             val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
             imgprofile.setImageBitmap(bitmap)
             CustomDialog.hideLoading()
-        }.addOnFailureListener{
+        }.addOnFailureListener {
             CustomDialog.hideLoading()
 
         }

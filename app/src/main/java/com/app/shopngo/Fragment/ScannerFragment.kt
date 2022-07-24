@@ -37,20 +37,22 @@ class ScannerFragment : Fragment(), CartAdapter.CartItemClickInerface {
     private lateinit var etjumlahbarang: EditText
     private lateinit var codeScanner: CodeScanner
     private lateinit var auth: FirebaseAuth
-    private lateinit var ivbarang : ImageView
-    private lateinit var btnadd : Button
-    private lateinit var databaseReference : DatabaseReference
-    private lateinit var nocode : String
+    private lateinit var ivbarang: ImageView
+    private lateinit var btnadd: Button
+    private lateinit var databaseReference: DatabaseReference
+    private lateinit var nocode: String
     private lateinit var list: List<CartEntity>
     private lateinit var cartAdapter: CartAdapter
-    private lateinit var cartViewModel : CartViewModel
+    private lateinit var cartViewModel: CartViewModel
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         val view = inflater.inflate(R.layout.fragment_scanner, container, false)
         val cartRepository = CartRepository(AppDatabase(context!!))
         val factory = CartViewModelFactory(cartRepository)
-        cartViewModel = ViewModelProvider(this,factory).get(CartViewModel::class.java)
+        cartViewModel = ViewModelProvider(this, factory).get(CartViewModel::class.java)
         list = ArrayList()
         cartAdapter = CartAdapter(list, this)
         return view
@@ -67,9 +69,14 @@ class ScannerFragment : Fragment(), CartAdapter.CartItemClickInerface {
         ivbarang = view.findViewById(R.id.ivbarang)
         auth = FirebaseAuth.getInstance()
         databaseReference = FirebaseDatabase.getInstance().getReference("Item")
-        val permission = ContextCompat.checkSelfPermission(activity, android.Manifest.permission.CAMERA)
-        if (permission!=PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(activity, arrayOf(android.Manifest.permission.CAMERA),1)
+        val permission =
+            ContextCompat.checkSelfPermission(activity, android.Manifest.permission.CAMERA)
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(
+                activity,
+                arrayOf(android.Manifest.permission.CAMERA),
+                1
+            )
         }
         codeScanner = CodeScanner(activity, scannerView)
         codeScanner.decodeCallback = DecodeCallback {
@@ -87,15 +94,15 @@ class ScannerFragment : Fragment(), CartAdapter.CartItemClickInerface {
             val harga = ethargabarang.text.toString()
             val jumlah = etjumlahbarang.text.toString()
             val gambar = ivbarang.toString()
-            val qty : Int = jumlah.toInt()
-            val price : Int = harga.toInt()
-            if(nama.isEmpty()&&harga.isEmpty()&&price==0) {
+            val qty: Int = jumlah.toInt()
+            val price: Int = harga.toInt()
+            if (nama.isEmpty() && harga.isEmpty() && price == 0) {
                 etnamabarang.error = "Scan barcode"
                 ethargabarang.error = "Scan barcode"
-            } else if (jumlah.isEmpty()&&qty==0) {
+            } else if (jumlah.isEmpty() && qty == 0) {
                 etjumlahbarang.error = "Masukkan Jumlah Barang"
-            }else{
-                val items = CartEntity(nama,price,qty,gambar)
+            } else {
+                val items = CartEntity(nama, price, qty, gambar)
                 cartViewModel.insert(items)
                 Toast.makeText(context, "barang berhasil ditambahakan", Toast.LENGTH_SHORT).show()
                 cartAdapter.notifyDataSetChanged()

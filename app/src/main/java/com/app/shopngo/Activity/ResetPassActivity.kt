@@ -16,8 +16,8 @@ import com.google.firebase.auth.FirebaseAuth
 
 class ResetPassActivity : AppCompatActivity() {
     private lateinit var toolbarreset: Toolbar
-    private lateinit var etEmailreset : EditText
-    private lateinit var btnSendMail : Button
+    private lateinit var etEmailreset: EditText
+    private lateinit var btnSendMail: Button
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,14 +33,14 @@ class ResetPassActivity : AppCompatActivity() {
 
         btnSendMail.setOnClickListener {
             val email = etEmailreset.text.toString().trim()
-            if(email.isEmpty()) {
+            if (email.isEmpty()) {
                 etEmailreset.error = "Masukkan Email Anda"
                 etEmailreset.requestFocus()
             } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                 etEmailreset.error = "Masukkan Email dengan Benar"
                 etEmailreset.requestFocus()
                 return@setOnClickListener
-            }else{
+            } else {
                 forgotpass(email)
             }
         }
@@ -57,16 +57,17 @@ class ResetPassActivity : AppCompatActivity() {
     private fun forgotpass(email: String) {
         auth.sendPasswordResetEmail(email)
             .addOnCompleteListener { task ->
-                if(task.isSuccessful){
-                    val builder = NotificationCompat.Builder(this, NotificationChannnel.CHANNEL_1_ID)
-                        .setSmallIcon(R.drawable.shopgo)
-                        .setContentTitle("Succeed")
-                        .setContentText("Your reset password has been sent to your email")
-                        .setPriority(NotificationCompat.PRIORITY_HIGH)
-                        .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                if (task.isSuccessful) {
+                    val builder =
+                        NotificationCompat.Builder(this, NotificationChannnel.CHANNEL_1_ID)
+                            .setSmallIcon(R.drawable.shopgo)
+                            .setContentTitle("Succeed")
+                            .setContentText("Your reset password has been sent to your email")
+                            .setPriority(NotificationCompat.PRIORITY_HIGH)
+                            .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                     val notification = builder.build()
                     val notificationManager = NotificationManagerCompat.from(this)
-                    notificationManager.notify(1,notification)
+                    notificationManager.notify(1, notification)
                     startActivity(Intent(this, SignInActivity::class.java))
                     finishAffinity()
                 }

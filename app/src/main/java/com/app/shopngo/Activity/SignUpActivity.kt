@@ -14,10 +14,10 @@ import com.google.firebase.auth.FirebaseAuth
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var toolbarUp: Toolbar
-    private lateinit var btnSignUp : Button
-    private lateinit var etEmailUp : EditText
-    private lateinit var etPassUp : EditText
-    private lateinit var etCPassUp : EditText
+    private lateinit var btnSignUp: Button
+    private lateinit var etEmailUp: EditText
+    private lateinit var etPassUp: EditText
+    private lateinit var etCPassUp: EditText
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,7 +38,7 @@ class SignUpActivity : AppCompatActivity() {
             val pass = etPassUp.text.toString().trim()
             val cpass = etCPassUp.text.toString().trim()
             CustomDialog.showLoading(this)
-            if (CheckValidation(email, pass, cpass)){
+            if (CheckValidation(email, pass, cpass)) {
                 registerToServer(email, pass)
             }
         }
@@ -54,10 +54,10 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun registerToServer(email: String, pass: String) {
-            auth.createUserWithEmailAndPassword(email,pass)
+        auth.createUserWithEmailAndPassword(email, pass)
             .addOnCompleteListener { task ->
                 CustomDialog.hideLoading()
-                if (task.isSuccessful){
+                if (task.isSuccessful) {
                     startActivity(Intent(this, MainActivity::class.java))
                     Toast.makeText(this, "Sign Up Berhasil", Toast.LENGTH_SHORT).show()
                     finishAffinity()
@@ -70,7 +70,7 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun CheckValidation(email: String, pass: String, cpass: String): Boolean {
-       if(email.isEmpty()) {
+        if (email.isEmpty()) {
             etEmailUp.error = "Masukkan Email Anda"
             etEmailUp.requestFocus()
         } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {

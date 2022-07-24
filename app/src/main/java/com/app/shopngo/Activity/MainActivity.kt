@@ -30,14 +30,14 @@ import java.io.File
 
 class MainActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
-    private lateinit var ivprofil : ImageView
-    private lateinit var tvemail : TextView
+    private lateinit var ivprofil: ImageView
+    private lateinit var tvemail: TextView
     private lateinit var toolbar: Toolbar
-    private lateinit var bottomnav : BottomNavigationView
+    private lateinit var bottomnav: BottomNavigationView
     private lateinit var mGoogleSignInClient: GoogleSignInClient
-    private lateinit var databaseReference : DatabaseReference
+    private lateinit var databaseReference: DatabaseReference
     private lateinit var storageReference: StorageReference
-    private lateinit var uid : String
+    private lateinit var uid: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         uid = auth.currentUser?.uid.toString()
         databaseReference = FirebaseDatabase.getInstance().getReference("Users")
-        if(uid.isNotEmpty()){
+        if (uid.isNotEmpty()) {
             getuserData()
             getData()
         }
@@ -85,12 +85,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun replacefragment(fragment : Fragment){
+    private fun replacefragment(fragment: Fragment) {
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.fragment_container, fragment)
         fragmentTransaction.commit()
     }
+
     private fun initFirebase() {
         auth = FirebaseAuth.getInstance()
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -103,10 +104,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun getData() {
         val user = auth.currentUser
-        if (user != null&&user.displayName!=null){
+        if (user != null && user.displayName != null) {
             tvemail.text = user.displayName.toString()
 //            Picasso.get().load(user.photoUrl).fit().centerCrop().into(ivprofil)
-        }else{
+        } else {
             if (user != null) {
                 tvemail.text = user.email.toString()
             }
@@ -119,8 +120,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            R.id.btnSignOut ->{
+        when (item.itemId) {
+            R.id.btnSignOut -> {
                 val builder = AlertDialog.Builder(this)
                 builder.setTitle("Peringatan !!! ")
                     .setMessage("Apakah Anda Ingin Keluar ? ")

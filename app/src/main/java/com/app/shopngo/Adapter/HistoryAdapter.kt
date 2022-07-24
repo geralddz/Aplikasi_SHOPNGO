@@ -11,15 +11,16 @@ import com.app.shopngo.Object.Helper
 import com.app.shopngo.R
 import com.app.shopngo.RoomDatabase.Model.HistoryEntity
 
-class HistoryAdapter (var listhistory: List<HistoryEntity>) : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
-    inner class HistoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+class HistoryAdapter(var listhistory: List<HistoryEntity>) :
+    RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
+    inner class HistoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val IdTrans = itemView.findViewById<TextView>(R.id.tv_idtran)
         val TotalTrans = itemView.findViewById<TextView>(R.id.tv_total)
         val Status = itemView.findViewById<TextView>(R.id.tv_status)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_history,parent,false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_history, parent, false)
         return HistoryViewHolder(view)
     }
 

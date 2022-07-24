@@ -18,7 +18,7 @@ open class CartAdapter(
     val cartItemClickInterface: CartItemClickInerface
 ) : RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
 
-    inner class CartViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    inner class CartViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val NamaBarang = itemView.findViewById<TextView>(R.id.tv_namabarang)
         val HargaBarang = itemView.findViewById<TextView>(R.id.tv_hargabarang)
         val JumlahBarang = itemView.findViewById<TextView>(R.id.tv_jumlah)
@@ -30,13 +30,13 @@ open class CartAdapter(
         val btnKurang = itemView.findViewById<ImageView>(R.id.btn_kurang)
     }
 
-    interface CartItemClickInerface{
+    interface CartItemClickInerface {
         fun onDelete(cartEntity: CartEntity)
         fun onUpdate(cartEntity: CartEntity)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_cart,parent,false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_cart, parent, false)
         return CartViewHolder(view)
     }
 
@@ -46,7 +46,7 @@ open class CartAdapter(
         val harga = Integer.valueOf(data.harga)
         holder.NamaBarang.text = list[position].nama
         holder.JumlahBarang.text = list[position].jumlah.toString()
-        val itemtotal : Int = list[position].harga * list.get(position).jumlah
+        val itemtotal: Int = list[position].harga * list.get(position).jumlah
         holder.HargaBarang.text = Helper().gantiRupiah(itemtotal)
         val image = list[position].imgurl.toUri()
         Picasso.get()
@@ -76,10 +76,11 @@ open class CartAdapter(
             list[position].selected = isChecked
             cartItemClickInterface.onUpdate(data)
         }
-        holder.Delete.setOnClickListener{
+        holder.Delete.setOnClickListener {
             cartItemClickInterface.onDelete(list[position])
         }
     }
+
     override fun getItemCount(): Int {
         return list.size
     }

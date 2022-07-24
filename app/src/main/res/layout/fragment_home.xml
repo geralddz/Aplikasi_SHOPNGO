@@ -8,128 +8,127 @@
     android:padding="10dp"
     tools:context=".Fragment.HomeFragment">
 
-  <RelativeLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:orientation="vertical"
-      android:layout_margin="10dp"
-      android:background="@drawable/bghome">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/bghome"
+        android:orientation="vertical">
 
-      <TextView
-          android:id="@+id/saldo"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_marginStart="20dp"
-          android:layout_marginTop="20dp"
-          android:layout_marginEnd="20dp"
-          android:layout_marginBottom="20dp"
-          android:text="Sisa saldo anda"
-          android:textColor="@color/white"
-          android:textSize="18dp"
-          android:textStyle="bold" />
+        <TextView
+            android:id="@+id/saldo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="Sisa saldo anda"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:textStyle="bold" />
 
-      <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_marginStart="100dp"
-          android:layout_marginTop="30dp"
-          android:layout_marginEnd="20dp"
-          android:layout_marginBottom="20dp"
-          android:layout_toRightOf="@id/saldo"
-          android:clickable="true"
-          android:focusable="true"
-          android:text="Top Up"
-          android:textColor="@color/white"
-          android:textSize="18dp"
-          android:textStyle="bold"
-          app:drawableTopCompat="@drawable/ic_baseline_add_card_24" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_toRightOf="@id/saldo"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="Top Up"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:drawableTopCompat="@drawable/ic_baseline_add_card_24" />
 
-      <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_below="@+id/saldo"
-          android:layout_marginStart="20dp"
-          android:layout_marginBottom="20dp"
-          android:text="Rp 400.000,-"
-          android:textColor="@color/white"
-          android:textSize="30sp"
-          android:textStyle="bold" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/saldo"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="Rp 400.000,-"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
 
-
-  </RelativeLayout>
+    </RelativeLayout>
 
     <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:rowCount="1"
-        android:columnCount="4"
+        android:layout_marginTop="10dp"
         android:alignmentMode="alignMargins"
-        android:layout_marginTop="10dp">
+        android:columnCount="4"
+        android:rowCount="1">
 
         <TextView
             android:id="@+id/tvscan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:gravity="center"
-            android:padding="5dp"
             android:background="@drawable/bgscan"
-            android:text="Scan"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:textSize="16sp"
             android:clickable="true"
             android:focusable="true"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Scan"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:drawableTopCompat="@drawable/ic_baseline_qr_code_scanner_24" />
 
         <TextView
             android:id="@+id/tvhistory"
-            android:background="@drawable/bghistory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:padding="5dp"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:text="History"
-            android:textSize="16sp"
+            android:background="@drawable/bghistory"
             android:clickable="true"
             android:focusable="true"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="History"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:drawableTopCompat="@drawable/ic_baseline_history_24" />
 
         <TextView
             android:id="@+id/tvcart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/bgcart"
             android:layout_margin="10dp"
-            android:padding="5dp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:gravity="center"
-            android:text="Cart"
-            android:textSize="16sp"
+            android:background="@drawable/bgcart"
             android:clickable="true"
             android:focusable="true"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Cart"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:drawableTopCompat="@drawable/ic_baseline_shopping_cart_24" />
 
         <TextView
             android:id="@+id/tvakun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/bgprofil"
             android:layout_margin="10dp"
-            android:padding="5dp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:gravity="center"
-            android:text="Profile"
-            android:textSize="16sp"
+            android:background="@drawable/bgprofil"
             android:clickable="true"
             android:focusable="true"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Profile"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:drawableTopCompat="@drawable/ic_baseline_person_24" />
 
     </GridLayout>
@@ -141,7 +140,7 @@
         android:layout_marginTop="20dp"
         android:text="Promo Belanja"
         android:textSize="20sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -152,123 +151,122 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:rowCount="10"
-            android:columnCount="2">
+            android:columnCount="2"
+            android:rowCount="10">
 
             <ImageView
                 android:layout_width="00dp"
                 android:layout_height="100dp"
-                android:layout_margin="10dp"
-                android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="10dp"
                 android:src="@drawable/promo1" />
 
             <ImageView
                 android:layout_width="00dp"
                 android:layout_height="100dp"
-                android:layout_margin="10dp"
-                android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
-                android:src="@drawable/promo2"/>
+                android:layout_columnWeight="1"
+                android:layout_margin="10dp"
+                android:src="@drawable/promo2" />
 
             <ImageView
                 android:layout_width="00dp"
                 android:layout_height="100dp"
-                android:layout_margin="10dp"
-                android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="10dp"
                 android:src="@drawable/promo3" />
 
             <ImageView
                 android:layout_width="00dp"
                 android:layout_height="100dp"
-                android:layout_margin="10dp"
-                android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
-                android:src="@drawable/promo4"/>
+                android:layout_columnWeight="1"
+                android:layout_margin="10dp"
+                android:src="@drawable/promo4" />
 
             <ImageView
                 android:layout_width="00dp"
                 android:layout_height="100dp"
-                android:layout_margin="10dp"
-                android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
-                android:src="@drawable/promo5"/>
+                android:layout_columnWeight="1"
+                android:layout_margin="10dp"
+                android:src="@drawable/promo5" />
 
             <ImageView
                 android:layout_width="00dp"
                 android:layout_height="100dp"
-                android:layout_margin="10dp"
-                android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="10dp"
                 android:src="@drawable/promo1" />
 
             <ImageView
                 android:layout_width="00dp"
                 android:layout_height="100dp"
-                android:layout_margin="10dp"
-                android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
-                android:src="@drawable/promo2"/>
+                android:layout_columnWeight="1"
+                android:layout_margin="10dp"
+                android:src="@drawable/promo2" />
 
             <ImageView
                 android:layout_width="00dp"
                 android:layout_height="100dp"
-                android:layout_margin="10dp"
-                android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="10dp"
                 android:src="@drawable/promo3" />
 
             <ImageView
                 android:layout_width="00dp"
                 android:layout_height="100dp"
-                android:layout_margin="10dp"
-                android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
-                android:src="@drawable/promo4"/>
+                android:layout_columnWeight="1"
+                android:layout_margin="10dp"
+                android:src="@drawable/promo4" />
 
             <ImageView
                 android:layout_width="00dp"
                 android:layout_height="100dp"
-                android:layout_margin="10dp"
-                android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
-                android:src="@drawable/promo5"/>
+                android:layout_columnWeight="1"
+                android:layout_margin="10dp"
+                android:src="@drawable/promo5" />
 
             <ImageView
                 android:layout_width="00dp"
                 android:layout_height="100dp"
-                android:layout_margin="10dp"
-                android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
-                android:src="@drawable/promo2"/>
+                android:layout_columnWeight="1"
+                android:layout_margin="10dp"
+                android:src="@drawable/promo2" />
 
             <ImageView
                 android:layout_width="00dp"
                 android:layout_height="100dp"
-                android:layout_margin="10dp"
-                android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="10dp"
                 android:src="@drawable/promo3" />
 
             <ImageView
                 android:layout_width="00dp"
                 android:layout_height="100dp"
-                android:layout_margin="10dp"
-                android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
-                android:src="@drawable/promo4"/>
+                android:layout_columnWeight="1"
+                android:layout_margin="10dp"
+                android:src="@drawable/promo4" />
 
             <ImageView
                 android:layout_width="00dp"
                 android:layout_height="100dp"
-                android:layout_margin="10dp"
-                android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
-                android:src="@drawable/promo5"/>
+                android:layout_columnWeight="1"
+                android:layout_margin="10dp"
+                android:src="@drawable/promo5" />
         </GridLayout>
     </ScrollView>
-
 
 
 </LinearLayout>
