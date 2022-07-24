@@ -1,13 +1,18 @@
-package com.app.shopngo.RoomDatabase
+package com.app.shopngo.RoomDatabase.DAO
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import androidx.room.OnConflictStrategy.REPLACE
+import com.app.shopngo.RoomDatabase.Model.CartEntity
 
 @Dao
 interface CartDAO {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = REPLACE)
     fun insert(item: CartEntity)
+
+    @Update
+    fun update(item: CartEntity): Int
 
     @Delete
     fun delete(item: CartEntity)

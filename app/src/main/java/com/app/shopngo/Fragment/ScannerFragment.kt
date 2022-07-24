@@ -17,9 +17,10 @@ import com.app.shopngo.Adapter.CartAdapter
 import com.app.shopngo.Object.CustomDialog
 import com.app.shopngo.R
 import com.app.shopngo.RoomDatabase.*
-import com.app.shopngo.RoomDatabase.ViewModel.CartRepository
-import com.app.shopngo.RoomDatabase.ViewModel.CartViewModel
-import com.app.shopngo.RoomDatabase.ViewModel.CartViewModelFactory
+import com.app.shopngo.RoomDatabase.Model.CartEntity
+import com.app.shopngo.RoomDatabase.ViewModel.Cart.CartRepository
+import com.app.shopngo.RoomDatabase.ViewModel.Cart.CartViewModel
+import com.app.shopngo.RoomDatabase.ViewModel.Cart.CartViewModelFactory
 import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.CodeScannerView
 import com.budiyev.android.codescanner.DecodeCallback
@@ -40,7 +41,7 @@ class ScannerFragment : Fragment(), CartAdapter.CartItemClickInerface {
     private lateinit var btnadd : Button
     private lateinit var databaseReference : DatabaseReference
     private lateinit var nocode : String
-    lateinit var list: List<CartEntity>
+    private lateinit var list: List<CartEntity>
     private lateinit var cartAdapter: CartAdapter
     private lateinit var cartViewModel : CartViewModel
 
@@ -85,15 +86,19 @@ class ScannerFragment : Fragment(), CartAdapter.CartItemClickInerface {
             val nama = etnamabarang.text.toString()
             val harga = ethargabarang.text.toString()
             val jumlah = etjumlahbarang.text.toString()
+            val gambar = ivbarang.toString()
             val qty : Int = jumlah.toInt()
             val price : Int = harga.toInt()
-            if (nama.isNotEmpty() && harga.isNotEmpty() && jumlah.isNotEmpty()){
-                val items = CartEntity(nama,price,qty)
-                cartViewModel.insert(items)
-                Toast.makeText(context, "Item Inserted", Toast.LENGTH_SHORT).show()
-                cartAdapter.notifyDataSetChanged()
+            if(nama.isEmpty()&&harga.isEmpty()&&price==0) {
+                etnamabarang.error = "Scan barcode"
+                ethargabarang.error = "Scan barcode"
+            } else if (jumlah.isEmpty()&&qty==0) {
+                etjumlahbarang.error = "Masukkan Jumlah Barang"
             }else{
-                Toast.makeText(context, "Masukkan Data dengan Benar", Toast.LENGTH_SHORT).show()
+                val items = CartEntity(nama,price,qty,gambar)
+                cartViewModel.insert(items)
+                Toast.makeText(context, "barang berhasil ditambahakan", Toast.LENGTH_SHORT).show()
+                cartAdapter.notifyDataSetChanged()
             }
         }
 
@@ -129,8 +134,14 @@ class ScannerFragment : Fragment(), CartAdapter.CartItemClickInerface {
         }
     }
 
-    override fun onItemClick(cartEntity: CartEntity) {
+
+    override fun onDelete(cartEntity: CartEntity) {
         TODO("Not yet implemented")
     }
+
+    override fun onUpdate(cartEntity: CartEntity) {
+        TODO("Not yet implemented")
+    }
+
 
 }

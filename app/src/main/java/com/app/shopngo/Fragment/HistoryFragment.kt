@@ -5,56 +5,57 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.app.shopngo.Adapter.CartAdapter
+import com.app.shopngo.Adapter.HistoryAdapter
 import com.app.shopngo.R
+import com.app.shopngo.RoomDatabase.AppDatabase
+import com.app.shopngo.RoomDatabase.Model.HistoryEntity
+import com.app.shopngo.RoomDatabase.ViewModel.Cart.CartRepository
+import com.app.shopngo.RoomDatabase.ViewModel.Cart.CartViewModel
+import com.app.shopngo.RoomDatabase.ViewModel.Cart.CartViewModelFactory
+import com.app.shopngo.RoomDatabase.ViewModel.History.HistoryRepository
+import com.app.shopngo.RoomDatabase.ViewModel.History.HistoryViewModel
+import com.app.shopngo.RoomDatabase.ViewModel.History.HistoryViewModelFactory
+import com.google.firebase.database.FirebaseDatabase
+import com.midtrans.sdk.corekit.core.themes.CustomColorTheme
+import com.midtrans.sdk.uikit.SdkUIFlowBuilder
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [HistoryFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class HistoryFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var itemsRV: RecyclerView
+    private lateinit var listhistory: List<HistoryEntity>
+    private lateinit var historyAdapter: HistoryAdapter
+    private lateinit var historyViewModel : HistoryViewModel
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val historyRepository = HistoryRepository(AppDatabase(context!!))
+        val factory = HistoryViewModelFactory(historyRepository)
+        historyViewModel = ViewModelProvider(this, factory)[HistoryViewModel::class.java]
+        historyViewModel.allhistoryItems().observe(viewLifecycleOwner) { it ->
+            historyAdapter.listhistory = it
+            historyAdapter.notifyDataSetChanged()
         }
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_history, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HistoryFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HistoryFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        itemsRV = view.findViewById(R.id.rv_history)
+        listhistory = ArrayList()
+        historyAdapter = HistoryAdapter(listhistory)
+        itemsRV.layoutManager = LinearLayoutManager(context)
+        itemsRV.adapter = historyAdapter
+        val historyRepository = HistoryRepository(AppDatabase(context!!))
+        val factory = HistoryViewModelFactory(historyRepository)
+        historyViewModel = ViewModelProvider(this, factory)[HistoryViewModel::class.java]
+        historyViewModel.allhistoryItems().observe(viewLifecycleOwner) { it ->
+            historyAdapter.listhistory = it
+            historyAdapter.notifyDataSetChanged()
+        }
     }
+
+    
 }

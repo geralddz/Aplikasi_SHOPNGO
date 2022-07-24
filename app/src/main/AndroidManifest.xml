@@ -3,9 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.app.shopngo">
 
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature android:name="android.hardware.camera" />
 
     <queries>
@@ -24,6 +27,7 @@
         android:roundIcon="@drawable/shopgo"
         android:supportsRtl="true"
         android:theme="@style/Theme.SHOPNGO"
+        tools:replace="android:allowBackup"
         tools:targetApi="31">
         <activity
             android:name=".Activity.EditProfileActivity"

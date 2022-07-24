@@ -1,4 +1,4 @@
-package com.app.shopngo.RoomDatabase
+package com.app.shopngo.RoomDatabase.Model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -14,7 +14,11 @@ open class CartEntity (
     var harga: Int,
 
     @ColumnInfo(name = "jumlah")
-    var jumlah : Int
+    var jumlah : Int,
+
+    var imgurl : String,
+
+    var selected: Boolean = true
 
 )
 {

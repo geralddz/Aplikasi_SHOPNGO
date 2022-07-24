@@ -13,7 +13,9 @@ class Helper {
     fun gantiRupiah(value: Int): String {
         return NumberFormat.getCurrencyInstance(Locale("in", "ID")).format(value)
     }
-
+    fun gantiRupiah(value: Double): String {
+        return NumberFormat.getCurrencyInstance(Locale("in", "ID")).format(value)
+    }
     fun gantiRupiah(value: Boolean): String {
         return NumberFormat.getCurrencyInstance(Locale("in", "ID")).format(value)
     }

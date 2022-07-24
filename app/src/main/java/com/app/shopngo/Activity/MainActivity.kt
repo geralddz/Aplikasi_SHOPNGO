@@ -103,9 +103,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun getData() {
         val user = auth.currentUser
-        if (user != null){
+        if (user != null&&user.displayName!=null){
             tvemail.text = user.displayName.toString()
 //            Picasso.get().load(user.photoUrl).fit().centerCrop().into(ivprofil)
+        }else{
+            if (user != null) {
+                tvemail.text = user.email.toString()
+            }
         }
     }
 

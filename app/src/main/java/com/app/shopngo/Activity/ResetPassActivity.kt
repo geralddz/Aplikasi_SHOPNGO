@@ -66,7 +66,6 @@ class ResetPassActivity : AppCompatActivity() {
                     val notification = builder.build()
                     val notificationManager = NotificationManagerCompat.from(this)
                     notificationManager.notify(1,notification)
-                    Toast.makeText(this, "Your reset password has been sent to your email", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this, SignInActivity::class.java))
                     finishAffinity()
                 }

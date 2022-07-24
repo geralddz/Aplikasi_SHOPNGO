@@ -1,4 +1,4 @@
-package com.app.shopngo.RoomDatabase.ViewModel
+package com.app.shopngo.RoomDatabase.ViewModel.Cart
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
