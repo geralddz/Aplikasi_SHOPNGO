@@ -28,8 +28,6 @@ class ResetPassActivity : AppCompatActivity() {
         etEmailreset = findViewById(R.id.etEmailResetPass)
         btnSendMail = findViewById(R.id.btnSendEmail)
 
-
-
         initActionBar()
         initFirebase()
 
@@ -45,6 +43,9 @@ class ResetPassActivity : AppCompatActivity() {
             }else{
                 forgotpass(email)
             }
+        }
+        toolbarreset.setNavigationOnClickListener {
+            finish()
         }
 
     }
