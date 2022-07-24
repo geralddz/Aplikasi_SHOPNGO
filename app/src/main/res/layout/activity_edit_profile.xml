@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@android:color/transparent"
-            android:elevation="0dp"/>
+            android:elevation="0dp" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
@@ -38,68 +38,68 @@
                 android:id="@+id/ivphoto"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:scaleType="centerCrop"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="20dp"
-                android:src="@drawable/photo"/>
+                android:scaleType="centerCrop"
+                android:src="@drawable/photo" />
 
             <TextView
                 android:id="@+id/tvpoto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:textStyle="bold"
                 android:layout_marginBottom="20dp"
-                android:text="add photo"/>
+                android:text="add photo"
+                android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:gravity="center_vertical"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                app:startIconDrawable="@drawable/person"
                 android:layout_marginBottom="20dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:gravity="center_vertical"
                 app:boxCornerRadiusBottomEnd="10dp"
                 app:boxCornerRadiusBottomStart="10dp"
                 app:boxCornerRadiusTopEnd="10dp"
                 app:boxCornerRadiusTopStart="10dp"
                 app:endIconMode="clear_text"
-                app:endIconTint="@color/colorPrimary">
+                app:endIconTint="@color/colorPrimary"
+                app:startIconDrawable="@drawable/person">
 
                 <EditText
                     android:id="@+id/etusername"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Username"
-                    android:paddingStart="32dp"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    android:paddingStart="32dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:gravity="center_vertical"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                app:startIconDrawable="@drawable/account"
                 android:layout_marginBottom="20dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:gravity="center_vertical"
                 app:boxCornerRadiusBottomEnd="10dp"
                 app:boxCornerRadiusBottomStart="10dp"
                 app:boxCornerRadiusTopEnd="10dp"
                 app:boxCornerRadiusTopStart="10dp"
                 app:endIconMode="clear_text"
-                app:endIconTint="@color/colorPrimary">
+                app:endIconTint="@color/colorPrimary"
+                app:startIconDrawable="@drawable/account">
 
                 <EditText
                     android:id="@+id/etnama"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Nama Lengkap"
-                    android:paddingStart="32dp"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    android:paddingStart="32dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -125,23 +125,23 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:startIconDrawable="@drawable/phone"
                 android:layout_marginBottom="36dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 app:boxCornerRadiusBottomEnd="10dp"
                 app:boxCornerRadiusBottomStart="10dp"
                 app:boxCornerRadiusTopEnd="10dp"
-                app:boxCornerRadiusTopStart="10dp">
+                app:boxCornerRadiusTopStart="10dp"
+                app:startIconDrawable="@drawable/phone">
 
                 <EditText
                     android:id="@+id/etphone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingStart="32dp"
                     android:hint="No. HP"
-                    android:inputType="phone"/>
+                    android:inputType="phone"
+                    android:paddingStart="32dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -151,11 +151,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:backgroundTint="@color/colorPrimary"
-                android:focusable="true"
                 android:clickable="true"
-                android:textAllCaps="false"
+                android:focusable="true"
                 android:text="UPDATE"
-                android:textColor="@android:color/white"/>
+                android:textAllCaps="false"
+                android:textColor="@android:color/white" />
         </LinearLayout>
 
     </ScrollView>

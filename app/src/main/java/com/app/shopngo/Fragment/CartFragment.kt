@@ -63,6 +63,8 @@ class CartFragment : Fragment(), CartAdapter.CartItemClickInerface {
         historyViewModel = ViewModelProvider(this,factoryhistory).get(HistoryViewModel::class.java)
         listhistory = ArrayList()
         historyAdapter = HistoryAdapter(listhistory)
+
+
         return inflater.inflate(R.layout.fragment_cart, container, false)
     }
 
@@ -115,9 +117,13 @@ class CartFragment : Fragment(), CartAdapter.CartItemClickInerface {
             this.activity?.let { CustomDialog.showLoading(it) }
             databaseReference.child(disc).get().addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    if (task.result?.exists() == true) {
-                        val dataSnapshot: DataSnapshot = task.result!!
-                        val diskon = dataSnapshot.child("disc").value.toString().toDouble()
+                        var diskon = 0.0
+                        var dataSnapshot: DataSnapshot = task.result!!
+                        if (dataSnapshot.child("disc").value == null) {
+                            diskon = 0.0
+                        }else{
+                            diskon = dataSnapshot.child("disc").value.toString().toDouble()
+                        }
                         cartViewModel.allCartItems().observe(viewLifecycleOwner) {
                             var totalHarga = 0
                             var disc = 0
@@ -134,7 +140,6 @@ class CartFragment : Fragment(), CartAdapter.CartItemClickInerface {
                             tvdisc.text = Helper().gantiRupiah(disc)
                             tvTotalBayar.text = Helper().gantiRupiah(totalbayar)
                             CustomDialog.hideLoading()
-                        }
                     }
                 }
             }
@@ -146,8 +151,13 @@ class CartFragment : Fragment(), CartAdapter.CartItemClickInerface {
             databaseReference.child(disc).get().addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     if (task.result?.exists() == true) {
-                        val dataSnapshot: DataSnapshot = task.result!!
-                        val diskon = dataSnapshot.child("disc").value.toString().toDouble()
+                        var diskon = 0.0
+                        var dataSnapshot: DataSnapshot = task.result!!
+                        if (dataSnapshot.child("disc").value == null) {
+                            diskon = 0.0
+                        }else{
+                            diskon = dataSnapshot.child("disc").value.toString().toDouble()
+                        }
                         cartViewModel.allCartItems().observe(viewLifecycleOwner) {
                             var totalHarga = 0
                             var disc = 0
@@ -203,7 +213,8 @@ class CartFragment : Fragment(), CartAdapter.CartItemClickInerface {
                         }
                     }
                 }
-            }.addOnFailureListener {
+
+            }.addOnFailureListener{
                 CustomDialog.hideLoading()
             }
         }

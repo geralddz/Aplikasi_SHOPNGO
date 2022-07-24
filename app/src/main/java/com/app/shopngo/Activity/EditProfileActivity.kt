@@ -19,19 +19,20 @@ import com.google.firebase.storage.StorageReference
 import com.squareup.picasso.Picasso
 
 class EditProfileActivity : AppCompatActivity() {
-    private lateinit var ivphoto : ImageView
-    private lateinit var tvpoto : TextView
-    private lateinit var etUsername : EditText
-    private lateinit var etNama : EditText
-    private lateinit var etalamat : EditText
-    private lateinit var ethp : EditText
-    private lateinit var imageUri : Uri
-    private lateinit var toolbarUp : Toolbar
-    private lateinit var btnsave : Button
+    private lateinit var ivphoto: ImageView
+    private lateinit var tvpoto: TextView
+    private lateinit var etUsername: EditText
+    private lateinit var etNama: EditText
+    private lateinit var etalamat: EditText
+    private lateinit var ethp: EditText
+    private lateinit var imageUri: Uri
+    private lateinit var toolbarUp: Toolbar
+    private lateinit var btnsave: Button
     private lateinit var auth: FirebaseAuth
-    private lateinit var databaseReference : DatabaseReference
+    private lateinit var databaseReference: DatabaseReference
     private lateinit var storageReference: StorageReference
-    companion object{
+
+    companion object {
         const val RC_IMAGE = 100
     }
 
@@ -70,9 +71,9 @@ class EditProfileActivity : AppCompatActivity() {
             val nope = ethp.text.toString().trim()
 
             val userData = UserData(username, nama, alamat, nope)
-            if(uid!=null){
+            if (uid != null) {
                 databaseReference.child(uid).setValue(userData).addOnCompleteListener {
-                    if (it.isSuccessful){
+                    if (it.isSuccessful) {
                         uploadImage()
                     }
                 }
@@ -89,7 +90,7 @@ class EditProfileActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == RC_IMAGE && resultCode == RESULT_OK){
+        if (requestCode == RC_IMAGE && resultCode == RESULT_OK) {
             imageUri = data?.data!!
             ivphoto.setImageURI(imageUri)
 
@@ -98,21 +99,22 @@ class EditProfileActivity : AppCompatActivity() {
 
     private fun uploadImage() {
 
-        storageReference = FirebaseStorage.getInstance().getReference("Users/"+auth.currentUser?.uid)
+        storageReference =
+            FirebaseStorage.getInstance().getReference("Users/" + auth.currentUser?.uid)
         storageReference.putFile(imageUri)
             .addOnSuccessListener {
                 Toast.makeText(this, "Profile Berhasil Terupdate", Toast.LENGTH_SHORT).show()
                 CustomDialog.hideLoading()
-                startActivity(Intent(this,MainActivity::class.java))
+                startActivity(Intent(this, MainActivity::class.java))
             }
             .addOnFailureListener {
                 Toast.makeText(this, "Profile Gagal Terupdate", Toast.LENGTH_SHORT).show()
             }
     }
 
-        private fun initActionBar() {
-            setSupportActionBar(toolbarUp)
-            supportActionBar?.setDisplayHomeAsUpEnabled(true)
-            supportActionBar?.title = "Lengkapi Profile"
-        }
+    private fun initActionBar() {
+        setSupportActionBar(toolbarUp)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = "Lengkapi Profile"
+    }
 }
