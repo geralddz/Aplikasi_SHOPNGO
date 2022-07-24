@@ -33,19 +33,19 @@
             android:id="@+id/tvEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/ivprofile"
             android:layout_below="@id/hi"
             android:layout_marginStart="10dp"
+            android:layout_toRightOf="@+id/ivprofile"
             android:text="User"
-            android:textStyle="bold"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/tbout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            app:menu="@menu/toolbarmenu"/>
+            app:menu="@menu/toolbarmenu" />
 
     </RelativeLayout>
 
@@ -56,7 +56,7 @@
         android:layout_above="@+id/bottomnav"
         android:layout_below="@+id/layoutprofil"
         android:layout_centerInParent="true"
-        android:layout_centerVertical="true"/>
+        android:layout_centerVertical="true" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomnav"
