@@ -43,24 +43,25 @@ class CartFragment : Fragment(), CartAdapter.CartItemClickInerface {
     private lateinit var itemsRV: RecyclerView
     private lateinit var list: List<CartEntity>
     private lateinit var cartAdapter: CartAdapter
-    private lateinit var cartViewModel : CartViewModel
+    private lateinit var cartViewModel: CartViewModel
     private lateinit var tvTotal: TextView
     private lateinit var tvTotalBayar: TextView
     private lateinit var tvdisc: TextView
     private lateinit var verif: ImageView
     private lateinit var btnCekout: Button
-    private lateinit var databaseReference : DatabaseReference
-    private lateinit var etdisc : EditText
+    private lateinit var databaseReference: DatabaseReference
+    private lateinit var etdisc: EditText
     private lateinit var transactionRequest: TransactionRequest
     private lateinit var listhistory: List<HistoryEntity>
     private lateinit var historyAdapter: HistoryAdapter
-    private lateinit var historyViewModel : HistoryViewModel
+    private lateinit var historyViewModel: HistoryViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View? {
         val historyRepository = HistoryRepository(AppDatabase(context!!))
         val factoryhistory = HistoryViewModelFactory(historyRepository)
-        historyViewModel = ViewModelProvider(this,factoryhistory).get(HistoryViewModel::class.java)
+        historyViewModel = ViewModelProvider(this, factoryhistory).get(HistoryViewModel::class.java)
         listhistory = ArrayList()
         historyAdapter = HistoryAdapter(listhistory)
 
@@ -95,7 +96,7 @@ class CartFragment : Fragment(), CartAdapter.CartItemClickInerface {
         itemsRV.adapter = cartAdapter
         val cartRepository = CartRepository(AppDatabase(context!!))
         val factory = CartViewModelFactory(cartRepository)
-        cartViewModel = ViewModelProvider(this,factory)[CartViewModel::class.java]
+        cartViewModel = ViewModelProvider(this, factory)[CartViewModel::class.java]
         cartViewModel.allCartItems().observe(viewLifecycleOwner) { it ->
             cartAdapter.list = it
             cartAdapter.notifyDataSetChanged()
@@ -117,29 +118,29 @@ class CartFragment : Fragment(), CartAdapter.CartItemClickInerface {
             this.activity?.let { CustomDialog.showLoading(it) }
             databaseReference.child(disc).get().addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                        var diskon = 0.0
-                        var dataSnapshot: DataSnapshot = task.result!!
-                        if (dataSnapshot.child("disc").value == null) {
-                            diskon = 0.0
-                        }else{
-                            diskon = dataSnapshot.child("disc").value.toString().toDouble()
-                        }
-                        cartViewModel.allCartItems().observe(viewLifecycleOwner) {
-                            var totalHarga = 0
-                            var disc = 0
-                            var totalbayar =0
-                            for (item in it) {
-                                if (item.selected) {
-                                    val harga = Integer.valueOf(item.harga)
-                                    totalHarga += (harga * item.jumlah)
-                                    disc = (totalHarga * diskon).toInt()
-                                    totalbayar = totalHarga - disc
-                                }
+                    var diskon = 0.0
+                    val dataSnapshot: DataSnapshot = task.result!!
+                    if (dataSnapshot.child("disc").value == null) {
+                        diskon = 0.0
+                    } else {
+                        diskon = dataSnapshot.child("disc").value.toString().toDouble()
+                    }
+                    cartViewModel.allCartItems().observe(viewLifecycleOwner) {
+                        var totalHarga = 0
+                        var disc = 0
+                        var totalbayar = 0
+                        for (item in it) {
+                            if (item.selected) {
+                                val harga = Integer.valueOf(item.harga)
+                                totalHarga += (harga * item.jumlah)
+                                disc = (totalHarga * diskon).toInt()
+                                totalbayar = totalHarga - disc
                             }
+                        }
 
-                            tvdisc.text = Helper().gantiRupiah(disc)
-                            tvTotalBayar.text = Helper().gantiRupiah(totalbayar)
-                            CustomDialog.hideLoading()
+                        tvdisc.text = Helper().gantiRupiah(disc)
+                        tvTotalBayar.text = Helper().gantiRupiah(totalbayar)
+                        CustomDialog.hideLoading()
                     }
                 }
             }
@@ -152,16 +153,16 @@ class CartFragment : Fragment(), CartAdapter.CartItemClickInerface {
                 if (task.isSuccessful) {
                     if (task.result?.exists() == true) {
                         var diskon = 0.0
-                        var dataSnapshot: DataSnapshot = task.result!!
+                        val dataSnapshot: DataSnapshot = task.result!!
                         if (dataSnapshot.child("disc").value == null) {
                             diskon = 0.0
-                        }else{
+                        } else {
                             diskon = dataSnapshot.child("disc").value.toString().toDouble()
                         }
                         cartViewModel.allCartItems().observe(viewLifecycleOwner) {
                             var totalHarga = 0
                             var disc = 0
-                            var totalbayar =0
+                            var totalbayar = 0
                             for (item in it) {
                                 if (item.selected) {
                                     val harga = Integer.valueOf(item.harga)
@@ -174,7 +175,10 @@ class CartFragment : Fragment(), CartAdapter.CartItemClickInerface {
                             tvdisc.text = Helper().gantiRupiah(disc)
                             tvTotalBayar.text = Helper().gantiRupiah(totalbayar)
 
-                            transactionRequest = TransactionRequest("Shop-N-Go"+System.currentTimeMillis().toString()+"", totalbayar.toDouble())
+                            transactionRequest = TransactionRequest(
+                                "Shop-N-Go" + System.currentTimeMillis().toString() + "",
+                                totalbayar.toDouble()
+                            )
                             val customerDetails = CustomerDetails()
                             customerDetails.customerIdentifier = "Gerald-6789"
                             customerDetails.phone = "08123456789"
@@ -204,22 +208,23 @@ class CartFragment : Fragment(), CartAdapter.CartItemClickInerface {
 
                             val id = transactionRequest.orderId.toString()
                             val total = transactionRequest.amount.toInt()
-                            if(id.isNotEmpty()){
-                            val items = HistoryEntity(id,total)
-                            historyViewModel.insert(items)
-                            historyAdapter.notifyDataSetChanged()
+                            if (id.isNotEmpty()) {
+                                val items = HistoryEntity(id, total)
+                                historyViewModel.insert(items)
+                                historyAdapter.notifyDataSetChanged()
                             }
                             CustomDialog.hideLoading()
                         }
                     }
                 }
 
-            }.addOnFailureListener{
+            }.addOnFailureListener {
                 CustomDialog.hideLoading()
             }
         }
 
     }
+
     override fun onDelete(cartEntity: CartEntity) {
         cartViewModel.delete(cartEntity)
         cartAdapter.notifyDataSetChanged()
@@ -229,7 +234,6 @@ class CartFragment : Fragment(), CartAdapter.CartItemClickInerface {
         cartViewModel.update(cartEntity)
         cartAdapter.notifyDataSetChanged()
     }
-
 
 
 }
