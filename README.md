@@ -1,2 +1,4 @@
-# FinalProjectMP3SHOPNGO
-Final Project MP3
+# Aplikasi_SHOPNGO
+Firebase<br>
+Room Databse<br>
+MVVM
