@@ -1,4 +1,4 @@
-# Aplikasi_SHOPNGO
+# Shop & Go
 Firebase<br>
 Room Databse<br>
 MVVM
